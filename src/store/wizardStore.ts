@@ -1,17 +1,40 @@
 import create from 'zustand';
 
+interface FamilyMember {
+  name: string;
+  relationship: string;
+  emergencyContact: string;
+  isEmergencyContact: boolean; // New field
+}
+
 interface FormData {
   firstName: string;
   lastName: string;
-  email: string;
+  middleName: string;
+  dateOfbirth: string;
+  emailId: string;
+  gender: string;
+  mobileNumber: string;
+  joiningDate: string;
+  joiningDepartment: string;
   address: string;
-  city: string;
-  state: string;
-  phone: string;
-  age: number;
-  comments: string;
-  agreement: boolean;
-  review: string;
+  nationality: string;
+  currentAddress: string;
+  permenantAddress: string;
+  qualification: string;
+  certification: string;
+  workExperience: string;
+  overAllExperience: string;
+  lastEmployer: string;
+  lastctc: string;
+  salaryInHand: string;
+  internationalWorker: any;
+  originStateAndCountry: string;
+  passportNumber: string;
+  passportValidity: string;
+  maritalStatus: string;
+  numberOfChildren: string;
+  familyMembers: FamilyMember[]; // Updated to include FamilyMember type
 }
 
 interface WizardState {
@@ -28,15 +51,38 @@ export const useWizardStore = create<WizardState>((set) => ({
   formData: {
     firstName: '',
     lastName: '',
-    email: '',
+    middleName: '',
+    dateOfbirth: '',
+    emailId: '',
+    gender: '',
+    mobileNumber: '',
+    joiningDate: '',
+    joiningDepartment: '',
     address: '',
-    city: '',
-    state: '',
-    phone: '',
-    age: 0,
-    comments: '',
-    agreement: false,
-    review: '',
+    nationality: '',
+    currentAddress: '',
+    permenantAddress: '',
+    qualification: '',
+    certification: '',
+    workExperience: '',
+    overAllExperience: '',
+    lastEmployer: '',
+    lastctc: '',
+    salaryInHand: '',
+    internationalWorker: '',
+    originStateAndCountry: '',
+    passportNumber: '',
+    passportValidity: '',
+    maritalStatus: '',
+    numberOfChildren: '',
+    familyMembers: [
+      {
+        name: '',
+        relationship: '',
+        emergencyContact: '',
+        isEmergencyContact: false,
+      },
+    ],
   },
   nextStep: () => set((state) => ({ ...state, step: state.step + 1 })),
   prevStep: () => set((state) => ({ ...state, step: state.step - 1 })),

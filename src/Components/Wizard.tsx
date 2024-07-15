@@ -13,7 +13,7 @@ const Wizard: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <div className="w-full max-w-xl bg-white rounded-lg shadow-md p-6">
+      <div className="w-full max-w-xxl bg-white rounded-lg shadow-md p-6">
         <div className="mb-4">
           <h2 className="text-2xl font-bold">Step {step} of {totalSteps}</h2>
         </div>
@@ -41,7 +41,7 @@ const Wizard: React.FC = () => {
           {step === 5 && <Step5 />}
           {step === 6 && <Step6 />}
         </div>
-        <div className="flex justify-between">
+        {/* <div className="flex justify-between">
           <button
             className="bg-gray-500 text-white py-2 px-4 rounded transition-colors duration-300"
             onClick={prevStep}
@@ -59,7 +59,7 @@ const Wizard: React.FC = () => {
           >
             Next
           </button>
-        </div>
+        </div> */}
         <div className="mt-4">
           <button
             className="text-blue-500 underline transition-colors duration-300"
