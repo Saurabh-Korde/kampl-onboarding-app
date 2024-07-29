@@ -1,0 +1,40 @@
+.custom-select {
+    appearance: none; /* Remove default arrow */
+    background: url('path/to/arrow-icon.svg') no-repeat right center; /* Add custom arrow */
+    background-size: 16px;
+    padding-right: 2.5rem; /* Space for the custom arrow */
+  }
+
+
+/* customCalendar.css */
+.react-datepicker {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb; /* Tailwind's gray-200 */
+}
+
+.react-datepicker__header {
+  background-color: #f3f4f6; /* Tailwind's gray-100 */
+  border-bottom: 1px solid #e5e7eb;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.react-datepicker__current-month {
+  color: #374151; /* Tailwind's gray-700 */
+  font-weight: 600;
+}
+
+.react-datepicker__day {
+  border-radius: 0.25rem;
+  color: #4b5563; /* Tailwind's gray-600 */
+}
+
+.react-datepicker__day:hover {
+  background-color: #f9fafb; /* Tailwind's gray-50 */
+  color: #1f2937; /* Tailwind's gray-900 */
+}
+
+.react-datepicker__day--selected {
+  background-color: #282c33; /* Tailwind's blue-500 */
+  color: #ffffff;
+}

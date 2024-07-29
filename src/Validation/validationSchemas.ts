@@ -46,11 +46,10 @@ export const validationSchemaStep1 = Yup.object({
   export const validationSchemaStep3 = Yup.object().shape({
     maritalStatus: Yup.string()
       .required('Marital status is required')
-      .oneOf(['single', 'married', 'divorced', 'widowed'], 'Invalid marital status'),
+      .oneOf(['Single', 'Married', 'Divorced', 'Widowed'], 'Invalid marital status'),
     numberOfChildren: Yup.number()
       .min(0, 'Number of children must be a positive number')
-      .integer('Number of children must be a whole number')
-      .required('Number of children is required'),
+      .integer('Number of children must be a whole number'),
     familyMembers: Yup.array().of(
       Yup.object().shape({
         name: Yup.string().required('Name is required'),
@@ -59,4 +58,17 @@ export const validationSchemaStep1 = Yup.object({
         isEmergencyContact: Yup.boolean(),
       })
     ),
+  });
+
+
+  export const validationSchemaStep4 = Yup.object().shape({
+    physicianName: Yup.string().max(15, "Must be 15 characters or less"),
+    physicianNumber: Yup.string().matches(
+      /^[0-9]{10}$/,
+      "Must be a valid 10-digit phone number"
+    ),
+    bloodGrop: Yup.string(),
+    height: Yup.string(),
+    weight: Yup.string(),
+    allergies: Yup.string(),
   });

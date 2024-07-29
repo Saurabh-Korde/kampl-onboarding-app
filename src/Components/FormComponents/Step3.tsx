@@ -43,34 +43,49 @@ const Step3: React.FC = () => {
         <div className="flex flex-wrap -mx-4">
   {/* Marital Status */}
   <div className="w-full lg:w-1/2 px-4 mb-4">
-    <label htmlFor="maritalStatus" className="block text-sm font-medium text-gray-700">
-      Marital Status
-    </label>
+  <label htmlFor="maritalStatus" className="block text-sm font-medium text-gray-700">
+    Marital Status
+  </label>
+  <div className="relative">
     <select
       id="maritalStatus"
       name="maritalStatus"
       value={formik.values.maritalStatus}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
-      className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-    >
+      className="appearance-none border-2 border-gray-300 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
       <option value="" label="Select marital status" />
-      <option value="single" label="Single" />
-      <option value="married" label="Married" />
-      <option value="divorced" label="Divorced" />
-      <option value="widowed" label="Widowed" />
+      <option value="Single" label="Single" />
+      <option value="Married" label="Married" />
+      <option value="Divorced" label="Divorced" />
+      <option value="Widowed" label="Widowed" />
     </select>
-    {formik.touched.maritalStatus && formik.errors.maritalStatus ? (
-      <div className="text-red-500 text-sm">{formik.errors.maritalStatus}</div>
-    ) : null}
+    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+      <svg
+        className="h-4 w-4 fill-current"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+      >
+        <path d="M7 10l5 5 5-5H7z" />
+      </svg>
+    </div>
   </div>
+  {formik.touched.maritalStatus && formik.errors.maritalStatus ? (
+    <div className="text-red-500 text-sm">{formik.errors.maritalStatus}</div>
+  ) : null}
+</div>
+
 
   {/* Number of Children */}
-  <div className="w-full lg:w-1/2 px-4 mb-4">
+  {
+    formik.values.maritalStatus=='Single'?null:
+    <div className="w-full lg:w-1/2 px-4 mb-4">
     <label htmlFor="numberOfChildren" className="block text-sm font-medium text-gray-700">
       Number of Children
     </label>
     <input
+    min={0}
       type="number"
       id="numberOfChildren"
       name="numberOfChildren"
@@ -78,12 +93,14 @@ const Step3: React.FC = () => {
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       placeholder="Enter number of children"
-      className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-    />
+      className="appearance-none border-2 border-gray-300 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      />
     {formik.touched.numberOfChildren && formik.errors.numberOfChildren ? (
       <div className="text-red-500 text-sm">{formik.errors.numberOfChildren}</div>
     ) : null}
   </div>
+  }
+ 
 </div>
 
         {/* Family Members */}
@@ -107,8 +124,8 @@ const Step3: React.FC = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         placeholder="Enter name"
-                        className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                      />
+                        className="appearance-none border-2 border-gray-300 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        />
                       {formik.touched.familyMembers?.[index]?.name && formik.errors.familyMembers?.[index]? (
                         <div className="text-red-500 text-sm">{(formik.errors.familyMembers[index] as FormikErrors<FamilyMember>)?.name}</div>
                       ) : null}
@@ -119,25 +136,40 @@ const Step3: React.FC = () => {
   <label htmlFor={`familyMembers.${index}.relationship`} className="block text-sm font-medium text-gray-700">
     Relationship
   </label>
-  <select
-    id={`familyMembers.${index}.relationship`}
-    name={`familyMembers.${index}.relationship`}
-    value={formik.values.familyMembers[index].relationship}
-    onChange={formik.handleChange}
-    onBlur={formik.handleBlur}
-    className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-  >
-    <option value="" label="Select relationship" />
-    <option value="spouse" label="Spouse" />
-    <option value="parent" label="Parent" />
-    <option value="child" label="Child" />
-    <option value="sibling" label="Sibling" />
-    <option value="other" label="Other" />
-  </select>
+  <div className="relative">
+    <select
+      id={`familyMembers.${index}.relationship`}
+      name={`familyMembers.${index}.relationship`}
+      value={formik.values.familyMembers[index].relationship}
+      onChange={formik.handleChange}
+      onBlur={formik.handleBlur}
+      className="appearance-none border-2 border-gray-300 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+      <option value="" label="Select relationship" />
+      <option value="Spouse" label="Spouse" />
+      <option value="Mother" label="Mother" />
+      <option value="Father" label="Father" />
+      <option value="Sister" label="Sister" />
+      <option value="Brother" label="Brother" />
+      <option value="Daughter" label="Daughter" />
+      <option value="Son" label="Son" />
+      <option value="Other" label="Other" />
+    </select>
+    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+      <svg
+        className="h-4 w-4 fill-current"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+      >
+        <path d="M7 10l5 5 5-5H7z" />
+      </svg>
+    </div>
+  </div>
   {formik.touched.familyMembers?.[index]?.relationship && formik.errors.familyMembers?.[index] ? (
     <div className="text-red-500 text-sm">{(formik.errors.familyMembers[index] as FormikErrors<FamilyMember>)?.relationship}</div>
   ) : null}
 </div>
+
 
 
                     {/* Emergency Contact */}
@@ -153,8 +185,8 @@ const Step3: React.FC = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         placeholder="Enter contact"
-                        className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                      />
+                        className="appearance-none border-2 border-gray-300 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
                     {formik.touched.familyMembers?.[index]?.emergencyContact && formik.errors.familyMembers?.[index] ? (
   <div className="text-red-500 text-sm">{(formik.errors.familyMembers[index] as FormikErrors<FamilyMember>)?.emergencyContact}</div>
 ) : null}
@@ -183,7 +215,7 @@ const Step3: React.FC = () => {
                         onClick={() => remove(index)}
                         className="bg-red-500 text-white py-2 px-4 rounded-lg mr-2 focus:outline-none focus:bg-red-700"
                       >
-                        Remove
+                        -
                       </button>
                       {index === formik.values.familyMembers.length - 1 && (
                         <button
@@ -191,7 +223,7 @@ const Step3: React.FC = () => {
                           onClick={() => push({ name: '', relationship: '', emergencyContact: '', isEmergencyContact: false })}
                           className="bg-green-500 text-white py-2 px-4 rounded-lg focus:outline-none focus:bg-green-700"
                         >
-                          Add More
+                         +
                         </button>
                       )}
                     </div>
@@ -209,7 +241,7 @@ const Step3: React.FC = () => {
             onClick={prevStep}
             className="bg-gray-500 text-white py-2 px-4 rounded-lg focus:outline-none focus:bg-gray-700"
           >
-            Previous
+            Back
           </button>
           <button
             type="submit"

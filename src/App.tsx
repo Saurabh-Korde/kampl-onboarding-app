@@ -1,14 +1,10 @@
-import { useState } from 'react'
-// import './App.css'
-import Wizard from './Components/Wizard'
+// src/App.tsx
+import { RouterProvider } from 'react-router-dom';
+import router from './Routes/Router';
+
 
 function App() {
-  
-  return(
-    <>
-    <Wizard/>
-    </>
-  )
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;

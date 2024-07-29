@@ -13,3 +13,14 @@ export const formatDate = (date:any) => {
   };
   
 
+ export function getFormattedDate(dateString: string): string {
+    const date = new Date(dateString);
+  
+    // Get the day, month, and year
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+    const year = date.getFullYear();
+  
+    // Return the formatted date string
+    return `${day}-${month}-${year}`;
+  }
